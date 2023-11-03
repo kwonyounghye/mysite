@@ -2,9 +2,8 @@
 
 // 제이쿼리 로드 구역
 $(() => {
-
     // 모든 a요소 기본이동막기
-    $('a').click(e=>e.preventDefault());
+    $("a").click((e) => e.preventDefault());
     // 요구사항: 각 네비게이션 클릭 시 페이지 이동하기
     // 1. 대상선정
     // 1-1. 로고 링크 : .logo a
@@ -38,7 +37,7 @@ $(() => {
 
     // $('.sns a:last').before(`<헐></헐>`);
     // $('.sns a:last').after(`<크></크>`);
-    $('.sns a:last,.mosns a:last').before(`
+    $(".sns a:last,.mosns a:last").before(`
     <a href="#" class="fi fi-laptop">
         <span class="ir">로그인</span>
     </a>
@@ -60,7 +59,7 @@ $(() => {
             $(ele).attr("title", $(ele).text().trim());
         }) ///////////////// each /////////////////
         // 위에서 이어서 a요소에 링크 설정하기 //////
-        .click(function() {
+        .click(function () {
             // 1. 클릭 시 해당요소 텍스트읽기
             let atxt = $(this).text().trim();
             console.log("sns파트메뉴: ", atxt);
@@ -85,6 +84,9 @@ $(() => {
                 case "로그인":
                     url = "login";
                     break;
+                case "로그아웃":
+                    url = "index";
+                    break;
                 case "회원가입":
                     url = "member";
                     break;
@@ -95,10 +97,9 @@ $(() => {
 
             // 3. 페이지 이동하기
             // 내부페이지는 현재페이지에서 이동하기
-            if (atxt == "로그인" || atxt == "회원가입" || atxt == "갤러리") {
+            if (atxt == "로그인" || atxt == "회원가입" || atxt == "갤러리" || atxt == "로그아웃") {
                 location.href = url + ".php";
-            } 
-            else {
+            } else {
                 // window.open(주소) - 새창열기(브라우저 탭메뉴)
                 window.open(url);
             }
@@ -107,5 +108,5 @@ $(() => {
     // 모바일 메뉴박스의 sns 링크 중 4번째 요소
     // 다음에 <br> 태그넣고 줄바꿈
     // .mosns a
-    $(".mosns a").eq(3).after('<br>');
+    $(".mosns a").eq(3).after("<br>");
 }); /////////////////// jQB ////////////////
